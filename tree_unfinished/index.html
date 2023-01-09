@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Playground</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="result">
+        <div id="stars">Stars in total:</div>
+        <div id="total">0</div>
+        <div id="hex">#000000</div>
+    </div>
+
+
+    <div id=TreeBox>
+        <div id=tree>
+            <script>
+                let star = "<span>*</span>"
+                //let spc = "&nbsp"--------------------------------------------------> to nie jest potrzebne kiedy w divie jest text align center
+
+
+
+                height()
+
+                function height() {
+                    let i = prompt("Podaj wysokość choinki:")
+
+                    if (i > 0) {
+
+
+
+
+                        let j = i
+
+                        function recurse() {
+
+
+                            if (i <= 0) return;
+
+
+
+                            //document.write(spc.repeat(i)) -----------------------> to też nie jest potrzebne kiedy jest text align center
+                            document.write(`${star.repeat(j - i + 1)}<br>`)
+                            console.log("floor " + i + " " + "=>" + " " + (j - i + 1) + " stars ")
+                            i--
+                            j++
+
+                            recurse();
+                        }
+
+                        let StarSum = i * i
+                        document.getElementById("total").innerHTML = StarSum;
+
+                        recurse();
+
+
+                    }
+                    else {
+                        alert("Are you ok?")
+                        height()
+                    }
+                    
+
+                }
+                
+                let Sum = document.getElementById("total").innerHTML
+               //console.log(Sum)
+
+               let randomStar = Math.floor(Math.random() * Sum);
+               console.log(randomStar)
+
+                function change() {
+                    const RandomColor = Math.floor(Math.random() * 16777215).toString(16);
+                    document.getElementById("TreeBox").style.color = "#" + RandomColor
+                    document.getElementById("hex").innerHTML = "#" + RandomColor
+                }
+
+
+
+
+                function change2() {
+                    document.getElementById("TreeBox").style.color = "red";
+                    document.getElementById("hex").innerHTML = "#ff0000"
+                }
+
+
+                function inter() {
+                    setInterval(() => {
+                        console.log(Sum)
+                        let randomStar = Math.floor(Math.random() * Sum);
+                        document.querySelectorAll('#tree span')[randomStar].style.color = "red"
+                        randomStar = Math.floor(Math.random() * Sum);
+                        document.querySelectorAll('#tree span')[randomStar].style.color = "blue"
+                    }, 10);
+                }
+                
+
+             
+                
+
+            </script>
+        </div>
+    </div>
+
+    <button id="btn4" onclick="inter()">start</button>
+
+    <button id="btn5" onclick="stop()">stop</button>
+
+    <button id="btn3" onclick="add()">Add floor</button>
+
+    <button id="btn1" onclick="change()">Random color</button>
+
+    <button id="btn2" onclick="change2()">Red color</button>
+
+
+</body>
+
+</html>
