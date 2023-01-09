@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>MathRandom</title>
+</head>
+
+<body>
+
+    <script>
+
+        function start() {
+            let draws = prompt('Enter the number of draws:')
+
+            if (draws > 0) {
+
+                document.write(`Draws: ${draws} <br><br>`)
+
+
+                let numbers = []
+
+                for (let i = 0; i < draws; i++) {
+
+                    numbers.push(Math.random())
+                }
+
+                console.log(numbers.sort())
+
+                document.write(`lowest value: ${Math.min(...numbers)}<br>`)
+                document.write(`highest value: ${Math.max(...numbers)}<br><br>`)
+
+                const reload = document.createElement("button")
+                reload.innerHTML = "Do it again"
+                document.body.appendChild(reload)
+                reload.onclick = function() { location.reload() }
+                
+            }
+            else {
+                alert("Are you ok?")
+                start()
+            }
+
+        }
+
+
+    </script>
+
+    <img src="https://zapodaj.net/images/9a281fae1f003.png" alt="That's why I did my task a bit different way" style="border: 5px dashed red; padding: 10px;">
+    <br><br>
+    <button style="font-size: x-large;" onclick="start()">Make it random</button>
+
+</body>
+
+</html>
