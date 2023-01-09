@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>test</title>
+</head>
+
+<body>
+
+    <div id="box" style="border: 2px solid black; width: 40px; height: 35px; background-color: aquamarine; text-align: center; margin: 20px;"></div>
+
+    <script>
+        document.addEventListener("mousemove", function (x) {
+
+           // console.log(x.clientX, x.clientY)
+
+            const xyz = document.getElementById('box')
+
+            xyz.innerHTML = `${x.clientX} <br> ${x.clientY}`
+
+            xyz.style.position = 'absolute';
+            xyz.style.top = x.clientY + 'px';
+            xyz.style.left = x.clientX + 'px';
+
+        })
+    </script>
+
+
+</body>
+
+</html>
